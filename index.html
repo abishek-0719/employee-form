@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Employee List</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background: #f3f3f3;
+    }
+    .container {
+        width: 450px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px #ccc;
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 5px;
+        border: 1px solid #aaa;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        background: #333;
+        color: white;
+        border: none;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    button:hover {
+        background: #222;
+    }
+    #message {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    .employee-card {
+        background: #fafafa;
+        padding: 15px;
+        border: 1px solid #ddd;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+    .delete-btn {
+        padding: 6px 12px;
+        background: red;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 8px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add Employee</h2>
+
+    <input type="text" id="name" placeholder="Enter Name">
+    <input type="text" id="profession" placeholder="Enter Profession">
+    <input type="number" id="age" placeholder="Enter Age">
+
+    <button onclick="addEmployee()">Add Employee</button>
+
+    <p id="message"></p>
+
+    <h3>Added Employees</h3>
+    <div id="employeeList"></div>
+</div>
+
+<script>
+    let employees = [];
+    let idCounter = 1;
+
+    function addEmployee() {
+        const name = document.getElementById("name").value.trim();
+        const profession = document.getElementById("profession").value.trim();
+        const age = document.getElementById("age").value.trim();
+        const message = document.getElementById("message");
+
+        // Validation - show error if empty
+        if (!name || !profession || !age) {
+            message.style.color = "red";
+            message.innerText = "Error: Please fill all the fields.";
+            return;
+        }
+
+        // Success message
+        message.style.color = "green";
+        message.innerText = "Success: Employee added successfully!";
+
+        // Add employee to array
+        const newEmployee = {
+            id: idCounter++,
+            name,
+            profession,
+            age: Number(age)
+        };
+
+        employees.push(newEmployee);
+
+        // Clear inputs
+        document.getElementById("name").value = "";
+        document.getElementById("profession").value = "";
+        document.getElementById("age").value = "";
+
+        // Render UI
+        renderEmployees();
+    }
+
+    function deleteEmployee(id) {
+        employees = employees.filter(emp => emp.id !== id);
+        renderEmployees();
+    }
+
+    function renderEmployees() {
+        const list = document.getElementById("employeeList");
+        list.innerHTML = "";
+
+        if (employees.length === 0) {
+            list.innerHTML = "<p>No employees added.</p>";
+            return;
+        }
+
+        employees.forEach(emp => {
+            const div = document.createElement("div");
+            div.className = "employee-card";
+
+            div.innerHTML = `
+                <p><b>ID:</b> ${emp.id}</p>
+                <p><b>Name:</b> ${emp.name}</p>
+                <p><b>Profession:</b> ${emp.profession}</p>
+                <p><b>Age:</b> ${emp.age}</p>
+                <button class="delete-btn" onclick="deleteEmployee(${emp.id})">Delete</button>
+            `;
+
+            list.appendChild(div);
+        });
+    }
+</script>
+
+</body>
+</html>

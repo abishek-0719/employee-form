@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            --bg: #0d1117;
+            --card :rgb(41, 91, 165);
+            --text : rgb(130, 241, 225);
+            --muted: rgb(111,111,111);
+            --accent: rgb(165, 97, 112);
+        }
+
+        body{
+            font-family: Arial;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container{
+           max-width: 900px;
+           padding: 20px;
+           margin: 0 auto;
+        }
+
+        header{
+             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .brand{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo{
+            background-color: var(--accent);
+            color: #fff;
+            font-size: 20px;
+            border-radius: 50%;
+            padding: 10px 14px;
+        }
+        nav a{
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        nav a:hover{
+            color: var(--accent);
+        }
+
+        section{
+            margin: 40px 0;
+        }
+
+        h2{
+            color:var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .skills span{
+            background: var(--card);
+            padding: 6px 12px;
+            margin: 5px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        footer{
+            text-align: center;
+            margin: 40px 0;
+            font-size: 15px;
+            color:var(--muted);
+        }
+
+        .card{
+            background: var(--card);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="logo">VS</div>
+                <div>
+                    <div style="font-weight: 800;">Vishal Saini</div>
+                    <div style="font-size: 12px;color: var(--muted);">Backend Engineer • Java • Fintech</div>
+                </div>
+            </div>
+            <nav>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>  
+        </header>
+
+        <section class="hero">
+            <div>
+                <h1>Hi, I am Vishal</h1>
+                <p>I build scalable backend system for fintech using Java, Spring Boot, and Kafka</p>
+                <a class="ct" href="#projects">View Projects</a>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+
+            <div class="card">Projects</div>
+                <h3>Payment Gateway</h3>
+                <p>Created the payment gateway worked as a bridge between the payee and the receiver</p>
+                <div class="tags"><span class="tag">Java</span><span class="tag">Springboot</span><span class="tag">Kafka</span></div>
+            <div class="card">
+                <h3>Nodal Account Monitor</h3>
+                <p>Transaction dashboard with alerts for the low balance</p>
+                <div class="tags"><span class="tag">Java</span><span class="tag">Datadog</span><span class="tag">Redis</span></div>
+            </div>
+        </section>
+        <section class="skills" id="skills">
+            <div class="section-title">Skills</div>
+            <div class="skills">
+                <div><span>Java</span><span>Sprinboot</span><span>Kafka</span><span>Datadog</span><span>Redis</span><span>AWS</span></div>
+            </div>
+        </section>
+
+        <section class="about" id=""about> 
+            <div class="section-title">About</div>
+            <p>Passionate backend engineer with expertise in fintech systems handling high TPS.</p>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="section-title">
+                Contact
+            </div>
+            <p>Email: <a href="mailto:vishal@gmail.com">vishal@gmail.com</a> . <a href="linkedin.com">LinkedIn</a></p>
+        </section>
+        <footer><span id="year">Vishal Sainin . Built with CSS and HTML</span></footer>
+
+    </div>
+</body>
+</html>
